@@ -11,7 +11,7 @@ const y = Math.abs(positionLat - addressLat);
 const x2 = Math.pow((x), 2);
 const y2 = Math.pow((y), 2);
 const xy2 = x2 + y2;
-const finalResult = Math.sqrt(x2 + y2);
+const finalResult = Math.sqrt(xy2);
 console.log(finalResult);
 
 // ИЛИ В ВИДЕ ОДНОЙ СТРОЧКИ
