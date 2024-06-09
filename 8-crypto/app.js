@@ -1,17 +1,22 @@
-const password = ['s','s','a','p','d','o','r','w'];
-const fullPassword = password.join('');
-console.log(fullPassword);
-
-
-// Как в массиве сделать перестановку символов местами без их удаления и вернуть потом обратно?
-function passEncryptor() {
-    password [2] = password.splice(0, 1, password[3])[0];
-    console.log(password);
-
+function crypto(password) {
+    let cryptoPass = password.split(['']);
+    cryptoPass.reverse();
+    return cryptoPass;
 };
-passEncryptor();
+console.log(crypto('password'));
 
-function passCheck () {
-    console.log(fullPassword.includes('ssapdorw'|| 'password'));
+
+function check() {
+    let encryptedPass = crypto('password');
+    encryptedPass.reverse();
+    let truePass = encryptedPass.join('');
+
+    switch (truePass) {
+        case 'password':
+            console.log('Пароль верный!');
+        break;
+        default:
+            console.log('Пароль неверный!');
+    };
 };
-passCheck();
+console.log(check());

@@ -1,22 +1,32 @@
-// Совершенно не понял как сделать это, пытался прогуглить, но там уже более сложные примеры и варианты решения подобной задачи. Направьте, пожалуйста, какое решение применить?
-
-function summ (amount, sourceCurrency, targetCurrencyUSD, targetCurrencyEUR ) {
-    let USD = 90;
-    let RUB = 1;
-    let EUR = 96;
-    let targetUSD = USD > RUB;
-    let targetEUR = EUR > RUB;
-
-    switch(true) {
-        case targetUSD:
-            return (amount / USD) + targetCurrencyUSD;
-
-        case targetEUR:
-            return (amount / EUR) + targetCurrencyEUR;
-
-        default:
-            return null || 0;
-    }
+function summ (amount, sourceCurrency, targetCurrency) {
+    switch (sourceCurrency) {  
+        case 'RUB': switch (targetCurrency) {  
+            case 'USD': return amount / 89.7619;  
+            case 'EUR': return amount / 97.9126;  
+            case 'GBP': return amount / 113.6027;  
+            default: return null;   
+        }  
+        case 'USD': switch (targetCurrency) {  
+            case 'RUB': return amount * 89.7619;  
+            case 'EUR': return amount * 0.9168;  
+            case 'GBP': return amount * 0.7901;  
+            default: return null;  
+        }  
+        case 'EUR': switch (targetCurrency) {  
+            case 'RUB': return amount * 97.9126;  
+            case 'USD': return amount * 1.0908;  
+            case 'GBP': return amount * 0.8619;  
+            default: return null;  
+        }  
+        case 'GBP': switch (targetCurrency) {  
+            case 'RUB': return amount * 113.6027;  
+            case 'USD': return amount * 1.2656;  
+            case 'EUR': return amount * 1.1602;  
+            default: return null;  
+        }  
+        default:  
+            return null;  
+    }  
 };
 
-console.log(summ(1000, ` руб.`, `$`, `€`));
+console.log(summ(1000, 'RUB', 'USD'));
